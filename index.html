@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spa Essence | Catálogo Terapéutico</title>
+    
+    <!-- Fuentes de Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- VARIABLES DE DISEÑO --- */
+        :root {
+            --primary-dark: #2C3E36;      
+            --primary-light: #8FA89E;     
+            --accent-gold: #D4AF37;       
+            --bg-body: #FDFCF8;           
+            --bg-card: #FFFFFF;
+            --text-main: #4A4A4A;
+            --text-light: #888888;
+            --shadow-soft: 0 10px 30px rgba(0,0,0,0.04);
+            --shadow-hover: 0 15px 40px rgba(44, 62, 54, 0.15);
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; }
+
+        /* --- HEADER (SIN MENÚ) --- */
+        header {
+            background-color: var(--bg-card);
+            padding: 25px 40px;
+            text-align: center; /* Centrado */
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo {
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            letter-spacing: 2px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            position: relative;
+            height: 60vh;
+            min-height: 400px;
+            background-image: url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(44, 62, 54, 0.4);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+
+        .hero-content h2 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.9;
+        }
+
+        /* --- CATALOGO --- */
+        .container {            max-width: 1100px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--primary-dark);
+        }
+
+        .section-title h3 { font-size: 2.5rem; margin-bottom: 15px; }
+
+        .section-title .divider {
+            width: 60px;
+            height: 2px;
+            background-color: var(--accent-gold);
+            margin: 0 auto;
+        }
+
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        /* --- TARJETA (CARD) --- */
+        .card {
+            background: var(--bg-card);
+            border-radius: 20px; 
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .card-image-wrapper {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card img {
+            width: 100%;            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .card:hover img { transform: scale(1.05); }
+
+        .card-content {
+            padding: 30px 25px;
+            text-align: center;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            color: var(--primary-dark);
+            margin: 0 0 10px 0;
+        }
+
+        .card-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .btn-details {
+            display: inline-block;
+            padding: 12px 30px;
+            border: 1px solid var(--primary-dark);
+            color: var(--primary-dark);
+            text-decoration: none;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            border-radius: 50px; 
+        }
+
+        .card:hover .btn-details {
+            background-color: var(--primary-dark);
+            color: white;
+        }
+
+        /* --- MODAL --- */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(44, 62, 54, 0.85);
+            backdrop-filter: blur(8px);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.show { display: flex; opacity: 1; }
+
+        .modal-content {
+            background-color: var(--bg-body);
+            width: 90%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: row;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            animation: slideUp 0.5s ease forwards;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-image-container {
+            flex: 1;
+            min-height: 300px;
+        }
+
+        .modal-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-info {
+            flex: 1.2;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 35px;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: color 0.3s;
+            line-height: 1;
+            z-index: 10;
+        }
+
+        .close-btn:hover { color: var(--primary-dark); }
+
+        #modal-title {
+            font-size: 2.2rem;
+            color: var(--primary-dark);
+            margin-top: 0;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+
+        #modal-desc {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .modal-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+
+        .meta-item strong {
+            color: var(--primary-dark);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--primary-dark);
+            color: rgba(255,255,255,0.7);            text-align: center;
+            padding: 40px 0;
+            margin-top: 80px;
+            font-size: 0.85rem;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero-content h2 { font-size: 2.5rem; }
+            
+            .modal-content {
+                flex-direction: column;
+                height: 90vh;
+                overflow-y: auto;
+            }
+            
+            .modal-image-container { height: 250px; flex: none; }
+            .modal-info { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header limpio (Solo Logo) -->
+    <header>
+        <div class="logo">SPA ESSENCE</div>
+    </header>
+
+    <div class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h2>Equilibrio Natural</h2>
+            <p>Descubre nuestra colección de terapias holísticas</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section-title">
+            <h3>Nuestros Tratamientos</h3>
+            <div class="divider"></div>
+        </div>
+        
+        <div class="catalog-grid">
+
+            <!-- Ficha 1 -->
+            <div class="card" onclick="openModal('m1')">
+                <div class="card-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Masaje Relajante">
+                </div>
+                <div class="card-content">                    <h3 class="card-title">Relajación Profunda</h3>
+                    <span class="card-subtitle">Terapia Sueca</span>
+                    <span class="btn-details">Explorar</span>
+                </div>
+            </div>
+
+            <!-- Ficha 2 -->
+            <div class="card" onclick="openModal('m2')">
+                <div class="card-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Piedras Calientes">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Litoterapia</h3>
+                    <span class="card-subtitle">Piedras Volcánicas</span>
+                    <span class="btn-details">Explorar</span>
+                </div>
+            </div>
+
+            <!-- Ficha 3 -->
+            <div class="card" onclick="openModal('m3')">
+                <div class="card-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Aromaterapia">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Aromaterapia</h3>
+                    <span class="card-subtitle">Esencias Botánicas</span>
+                    <span class="btn-details">Explorar</span>
+                </div>
+            </div>
+
+            <!-- Ficha 4 -->
+            <div class="card" onclick="openModal('m4')">
+                <div class="card-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Masaje Deportivo">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Recuperación Muscular</h3>
+                    <span class="card-subtitle">Técnica Deportiva</span>
+                    <span class="btn-details">Explorar</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Modal Detalle -->
+    <div id="detailModal" class="modal" onclick="closeModal(event)">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModalBtn()">&times;</span>
+                        <div class="modal-image-container">
+                <img id="modal-img" src="" alt="">
+            </div>
+            
+            <div class="modal-info">
+                <h2 id="modal-title"></h2>
+                <p id="modal-desc"></p>
+                
+                <div class="modal-meta">
+                    <div class="meta-item">
+                        <strong>Duración</strong>
+                        <span id="modal-duracion"></span>
+                    </div>
+                    <div class="meta-item">
+                        <strong>Enfoque</strong>
+                        <span id="modal-focus"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>SPA ESSENCE &copy; 2023. Todos los derechos reservados.</p>
+        <p style="opacity: 0.5; font-size: 0.7rem; margin-top: 10px;">Diseño para fines académicos</p>
+    </footer>
+
+    <script>
+        const tratamientos = {
+            'm1': {
+                titulo: "Relajación Profunda",
+                subtitulo: "Terapia Sueca",
+                imagen: "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80",
+                descripcion: "Un masaje clásico diseñado para aliviar la tensión muscular y calmar el sistema nervioso. Utilizamos movimientos largos y fluidos (effleurage) combinados con amasamiento suave para mejorar la circulación y promover un estado de bienestar general.",
+                duracion: "60 Minutos",
+                focus: "Estrés y Tensión"
+            },
+            'm2': {
+                titulo: "Litoterapia",
+                subtitulo: "Piedras Volcánicas",
+                imagen: "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80",
+                descripcion: "Una terapia ancestral que utiliza el calor retenido en piedras de basalto pulidas. Las piedras se colocan en puntos clave del cuerpo para transferir energía térmica, permitiendo que el terapeuta trabaje capas musculares profundas sin aplicar presión excesiva.",
+                duracion: "75 Minutos",
+                focus: "Calor y Drenaje"
+            },
+            'm3': {
+                titulo: "Aromaterapia",
+                subtitulo: "Esencias Botánicas",
+                imagen: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80",
+                descripcion: "Una experiencia sensorial completa donde el tacto se une al olfato. Seleccionamos aceites esenciales puros (lavanda, eucalipto, cítricos) según las necesidades emocionales del cliente para equilibrar el cuerpo y la mente.",                duracion: "50 Minutos",
+                focus: "Equilibrio Emocional"
+            },
+            'm4': {
+                titulo: "Recuperación Muscular",
+                subtitulo: "Técnica Deportiva",
+                imagen: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80",
+                descripcion: "Enfoque terapéutico dirigido a atletas o personas con alta actividad física. Trabaja sobre fascias y tejidos profundos para eliminar toxinas acumuladas por el esfuerzo, prevenir lesiones y acelerar la recuperación post-entrenamiento.",
+                duracion: "60 Minutos",
+                focus: "Rendimiento Físico"
+            }
+        };
+
+        const modal = document.getElementById('detailModal');
+        
+        function openModal(id) {
+            const data = tratamientos[id];
+            if(data) {
+                document.getElementById('modal-title').innerText = data.titulo;
+                document.getElementById('modal-desc').innerText = data.descripcion;
+                document.getElementById('modal-img').src = data.imagen;
+                document.getElementById('modal-duracion').innerText = data.duracion;
+                document.getElementById('modal-focus').innerText = data.focus;
+                
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModalBtn() {
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        function closeModal(event) {
+            if (event.target === modal) {
+                closeModalBtn();
+            }
+        }
+    </script>
+</body>
+</html>
