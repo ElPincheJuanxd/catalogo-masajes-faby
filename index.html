@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spa Essence | Catálogo Terapéutico</title>
+    <title>Adan & Eva Spa | Catálogo</title>
     
     <!-- Fuentes de Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,15 +13,14 @@
     <style>
         /* --- VARIABLES DE DISEÑO --- */
         :root {
-            --primary-dark: #2C3E36;      
-            --primary-light: #8FA89E;     
-            --accent-gold: #D4AF37;       
-            --bg-body: #FDFCF8;           
+            --primary-dark: #5D4037;
+            --primary-gold: #C5A059;
+            --bg-body: #FDFBF7;
             --bg-card: #FFFFFF;
             --text-main: #4A4A4A;
             --text-light: #888888;
-            --shadow-soft: 0 10px 30px rgba(0,0,0,0.04);
-            --shadow-hover: 0 15px 40px rgba(44, 62, 54, 0.15);
+            --shadow-soft: 0 10px 30px rgba(0,0,0,0.05);
+            --shadow-hover: 0 15px 40px rgba(93, 64, 55, 0.15);
         }
 
         * { box-sizing: border-box; }
@@ -35,32 +34,36 @@
             overflow-x: hidden;
         }
 
-        h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 400; }
 
-        /* --- HEADER (SIN MENÚ) --- */
+        /* --- HEADER --- */
         header {
             background-color: var(--bg-card);
             padding: 25px 40px;
-            text-align: center; /* Centrado */
+            text-align: center;
             border-bottom: 1px solid rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
             z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
         }
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             color: var(--primary-dark);
             letter-spacing: 2px;
             font-weight: 600;
             display: inline-block;
+            text-transform: uppercase;
         }
+
+        .logo span { color: var(--primary-gold); }
 
         /* --- HERO SECTION --- */
         .hero {
             position: relative;
             height: 60vh;
             min-height: 400px;
-            background-image: url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-image: url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1950');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -71,7 +74,7 @@
         .hero-overlay {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(44, 62, 54, 0.4);
+            background: rgba(93, 64, 55, 0.5);
         }
 
         .hero-content {
@@ -94,25 +97,29 @@
             text-transform: uppercase;
             opacity: 0.9;
         }
-
-        /* --- CATALOGO --- */
-        .container {            max-width: 1100px;
-            margin: 80px auto;
+        /* --- SECCIONES GENERALES --- */
+        .container {
+            max-width: 1100px;
+            margin: 60px auto;
             padding: 0 20px;
         }
 
-        .section-title {
+        .section-header {
             text-align: center;
-            margin-bottom: 60px;
-            color: var(--primary-dark);
+            margin-bottom: 50px;
+            margin-top: 80px;
         }
 
-        .section-title h3 { font-size: 2.5rem; margin-bottom: 15px; }
+        .section-header h3 {
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+        }
 
-        .section-title .divider {
-            width: 60px;
-            height: 2px;
-            background-color: var(--accent-gold);
+        .section-header .divider {
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-gold);
             margin: 0 auto;
         }
 
@@ -131,13 +138,14 @@
             transition: all 0.4s ease;
             cursor: pointer;
             position: relative;
+            border: 1px solid rgba(0,0,0,0.03);
         }
 
         .card:hover {
             transform: translateY(-8px);
             box-shadow: var(--shadow-hover);
+            border-color: var(--primary-gold);
         }
-
         .card-image-wrapper {
             height: 250px;
             overflow: hidden;
@@ -145,7 +153,8 @@
         }
 
         .card img {
-            width: 100%;            height: 100%;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
             transition: transform 0.6s ease;
         }
@@ -165,13 +174,27 @@
 
         .card-subtitle {
             font-size: 0.85rem;
-            color: var(--text-light);
+            color: var(--primary-gold);
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             display: block;
+            font-weight: 600;
         }
 
+        .card-price {
+            display: block;
+            font-size: 1.3rem;
+            color: var(--primary-dark);
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .card-price span {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: 400;
+        }
         .btn-details {
             display: inline-block;
             padding: 12px 30px;
@@ -188,17 +211,19 @@
         .card:hover .btn-details {
             background-color: var(--primary-dark);
             color: white;
+            border-color: var(--primary-dark);
         }
 
         /* --- MODAL --- */
         .modal {
             display: none;
             position: fixed;
-            z-index: 1000;            left: 0;
+            z-index: 1000;
+            left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(44, 62, 54, 0.85);
+            background-color: rgba(93, 64, 55, 0.9);
             backdrop-filter: blur(8px);
             opacity: 0;
             transition: opacity 0.4s ease;
@@ -218,8 +243,7 @@
             border-radius: 20px;
             overflow: hidden;
             position: relative;
-            animation: slideUp 0.5s ease forwards;
-        }
+            animation: slideUp 0.5s ease forwards;        }
 
         @keyframes slideUp {
             from { transform: translateY(50px); opacity: 0; }
@@ -244,6 +268,7 @@
             flex-direction: column;
             justify-content: center;
         }
+
         .close-btn {
             position: absolute;
             top: 20px;
@@ -267,11 +292,46 @@
             padding-bottom: 15px;
         }
 
-        #modal-desc {
-            font-size: 1rem;
+        #modal-desc {            font-size: 1rem;
             line-height: 1.8;
             color: #555;
             margin-bottom: 30px;
+        }
+
+        .modal-prices {
+            background: linear-gradient(135deg, var(--primary-gold), #D4AF37);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            color: white;
+        }
+
+        .modal-prices h4 {
+            margin: 0 0 15px 0;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .price-option {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            font-size: 0.95rem;
+        }
+
+        .price-option:last-child {
+            border-bottom: none;
+        }
+
+        .price-option .duration {
+            opacity: 0.9;
+        }
+
+        .price-option .amount {
+            font-weight: 600;
+            font-size: 1.1rem;
         }
 
         .modal-meta {
@@ -282,17 +342,37 @@
             border-top: 1px solid #eee;
             padding-top: 20px;
         }
-
         .meta-item strong {
             color: var(--primary-dark);
             display: block;
             margin-bottom: 5px;
         }
 
+        .includes-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        .includes-list li::before {
+            content: "•";
+            color: var(--primary-gold);
+            font-weight: bold;
+            display: inline-block; 
+            width: 1em;
+            margin-left: -1em;
+        }
+        .includes-list li {
+            padding-left: 1em;
+            margin-bottom: 5px;
+        }
+
         /* --- FOOTER --- */
         footer {
             background-color: var(--primary-dark);
-            color: rgba(255,255,255,0.7);            text-align: center;
+            color: rgba(255,255,255,0.7);
+            text-align: center;
             padding: 40px 0;
             margin-top: 80px;
             font-size: 0.85rem;
@@ -310,79 +390,284 @@
             
             .modal-image-container { height: 250px; flex: none; }
             .modal-info { padding: 30px; }
+                        .modal-prices {
+                padding: 15px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header limpio (Solo Logo) -->
+    <!-- Header -->
     <header>
-        <div class="logo">SPA ESSENCE</div>
+        <div class="logo">Adan & <span>Eva Spa</span></div>
     </header>
 
+    <!-- Hero Section -->
     <div class="hero">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h2>Equilibrio Natural</h2>
-            <p>Descubre nuestra colección de terapias holísticas</p>
+            <h2>Bienestar Integral</h2>
+            <p>Descubre nuestros paquetes y tratamientos exclusivos</p>
         </div>
     </div>
 
+    <!-- SECCIÓN 1: PAQUETES ESPECIALES -->
     <div class="container">
-        <div class="section-title">
-            <h3>Nuestros Tratamientos</h3>
+        <div class="section-header">
+            <h3>Paquetes Especiales</h3>
             <div class="divider"></div>
         </div>
         
         <div class="catalog-grid">
-
-            <!-- Ficha 1 -->
-            <div class="card" onclick="openModal('m1')">
+            <!-- Goodbyes Stress -->
+            <div class="card" onclick="openModal('pkg1')">
                 <div class="card-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Masaje Relajante">
-                </div>
-                <div class="card-content">                    <h3 class="card-title">Relajación Profunda</h3>
-                    <span class="card-subtitle">Terapia Sueca</span>
-                    <span class="btn-details">Explorar</span>
-                </div>
-            </div>
-
-            <!-- Ficha 2 -->
-            <div class="card" onclick="openModal('m2')">
-                <div class="card-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Piedras Calientes">
+                    <img src="imagenes/pkg1.jpg" alt="Goodbyes Stress">
                 </div>
                 <div class="card-content">
-                    <h3 class="card-title">Litoterapia</h3>
-                    <span class="card-subtitle">Piedras Volcánicas</span>
-                    <span class="btn-details">Explorar</span>
+                    <h3 class="card-title">Goodbyes Stress</h3>
+                    <span class="card-subtitle">Paquete Anti-Estrés</span>
+                    <span class="card-price">$60 <span>USD</span></span>
+                    <span class="btn-details">Ver Detalles</span>
                 </div>
             </div>
 
-            <!-- Ficha 3 -->
-            <div class="card" onclick="openModal('m3')">
+            <!-- Serenity -->
+            <div class="card" onclick="openModal('pkg2')">
                 <div class="card-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Aromaterapia">
+                    <img src="imagenes/pkg2.jpg" alt="Serenity">
                 </div>
                 <div class="card-content">
-                    <h3 class="card-title">Aromaterapia</h3>
-                    <span class="card-subtitle">Esencias Botánicas</span>
-                    <span class="btn-details">Explorar</span>
+                    <h3 class="card-title">Serenity</h3>                    <span class="card-subtitle">Armonía Total</span>
+                    <span class="card-price">$60 <span>USD</span></span>
+                    <span class="btn-details">Ver Detalles</span>
                 </div>
             </div>
 
-            <!-- Ficha 4 -->
-            <div class="card" onclick="openModal('m4')">
+            <!-- Purifying Sensation -->
+            <div class="card" onclick="openModal('pkg3')">
                 <div class="card-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Masaje Deportivo">
+                    <img src="imagenes/pkg3.jpg" alt="Purifying Sensation">
                 </div>
                 <div class="card-content">
-                    <h3 class="card-title">Recuperación Muscular</h3>
-                    <span class="card-subtitle">Técnica Deportiva</span>
-                    <span class="btn-details">Explorar</span>
+                    <h3 class="card-title">Purifying Sensation</h3>
+                    <span class="card-subtitle">Desintoxicación</span>
+                    <span class="card-price">$80 <span>USD</span></span>
+                    <span class="btn-details">Ver Detalles</span>
                 </div>
             </div>
 
+            <!-- Honeymoon -->
+            <div class="card" onclick="openModal('pkg4')">
+                <div class="card-image-wrapper">
+                    <img src="imagenes/pkg4.jpg" alt="Honeymoon">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Honeymoon</h3>
+                    <span class="card-subtitle">Experiencia para Parejas</span>
+                    <span class="card-price">$130 <span>USD</span></span>
+                    <span class="btn-details">Ver Detalles</span>
+                </div>
+            </div>
+
+             <!-- Relax Day -->
+             <div class="card" onclick="openModal('pkg5')">
+                <div class="card-image-wrapper">
+                    <img src="imagenes/pkg5.jpg" alt="Relax Day">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Relax Day</h3>
+                    <span class="card-subtitle">Jornada Completa</span>
+                    <span class="card-price">$170 <span>USD</span></span>
+                    <span class="btn-details">Ver Detalles</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 2: MASAJES INDIVIDUALES -->
+    <div class="container">
+        <div class="section-header">            <h3>Masajes Terapéuticos</h3>
+            <div class="divider"></div>
+        </div>
+        
+        <div class="catalog-grid">
+            <!-- Relajante -->
+            <div class="card" onclick="openModal('mas1')">
+                <div class="card-image-wrapper">
+                    <img src="imagenes/mas1.jpg" alt="Relajante">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Relaxing Massage</h3>
+                    <span class="card-subtitle">Clásico & Suave</span>
+                    <span class="card-price">Desde $35 <span>USD</span></span>
+                    <span class="btn-details">Ver Detalles</span>
+                </div>
+            </div>
+
+            <!-- Terapéutico -->
+            <div class="card" onclick="openModal('mas2')">
+                <div class="card-image-wrapper">
+                    <img src="imagenes/mas2.jpg" alt="Terapéutico">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Therapeutic Massage</h3>
+                    <span class="card-subtitle">Profundo & Medicinal</span>
+                    <span class="card-price">Desde $40 <span>USD</span></span>
+                    <span class="btn-details">Ver Detalles</span>
+                </div>
+            </div>
+
+            <!-- Cuban Rum -->
+            <div class="card" onclick="openModal('mas3')">
+                <div class="card-image-wrapper">
+                    <img src="imagenes/mas3.jpg" alt="Cuban Rum">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Cuban Rum Massage</h3>
+                    <span class="card-subtitle">Exótico & Caliente</span>
+                    <span class="card-price">$80 <span>USD</span></span>
+                    <span class="btn-details">Ver Detalles</span>
+                </div>
+            </div>
+
+            <!-- Four Hands -->
+            <div class="card" onclick="openModal('mas4')">
+                <div class="card-image-wrapper">
+                    <img src="imagenes/mas4.jpg" alt="Four Hands">
+                </div>
+                <div class="card-content">                    <h3 class="card-title">Four Hands Massage</h3>
+                    <span class="card-subtitle">Doble Terapeuta</span>
+                    <span class="card-price">$100 <span>USD</span></span>
+                    <span class="btn-details">Ver Detalles</span>
+                </div>
+            </div>
+
+            <!-- Couple Massage -->
+            <div class="card" onclick="openModal('mas5')">
+                <div class="card-image-wrapper">
+                    <img src="imagenes/mas5.jpg" alt="Couple">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Couple Massage</h3>
+                    <span class="card-subtitle">Para Parejas</span>
+                    <span class="card-price">Desde $75 <span>USD</span></span>
+                    <span class="btn-details">Ver Detalles</span>
+                </div>
+            </div>
+
+            <!-- Foot Reflexology -->
+            <div class="card" onclick="openModal('mas6')">
+                <div class="card-image-wrapper">
+                    <img src="imagenes/mas6.jpg" alt="Reflexology">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Foot Reflexology</h3>
+                    <span class="card-subtitle">Reflexología Podal</span>
+                    <span class="card-price">$33 <span>USD</span></span>
+                    <span class="btn-details">Ver Detalles</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 3: WRAPS & EXFOLIACIÓN -->
+    <div class="container">
+        <div class="section-header">
+            <h3>Cuidado Corporal</h3>
+            <div class="divider"></div>
+        </div>
+        
+        <div class="catalog-grid">
+            <!-- Seamud Wrap -->
+            <div class="card" onclick="openModal('wrap1')">
+                <div class="card-image-wrapper">
+                    <img src="imagenes/wrap1.jpg" alt="Seamud">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Seamud Wraps</h3>                    <span class="card-subtitle">Lodo Marino</span>
+                    <span class="card-price">$35 <span>USD</span></span>
+                    <span class="btn-details">Ver Detalles</span>
+                </div>
+            </div>
+
+            <!-- Chocolate Wrap -->
+            <div class="card" onclick="openModal('wrap2')">
+                <div class="card-image-wrapper">
+                    <img src="imagenes/wrap2.jpg" alt="Chocolate">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Chocolate Wrap</h3>
+                    <span class="card-subtitle">Antioxidante</span>
+                    <span class="card-price">$35 <span>USD</span></span>
+                    <span class="btn-details">Ver Detalles</span>
+                </div>
+            </div>
+
+            <!-- Marine Seaweed Wrap -->
+            <div class="card" onclick="openModal('wrap3')">
+                <div class="card-image-wrapper">
+                    <img src="imagenes/wrap3.jpg" alt="Seaweed">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Marine Seaweed Wrap</h3>
+                    <span class="card-subtitle">Algas Marinas</span>
+                    <span class="card-price">$35 <span>USD</span></span>
+                    <span class="btn-details">Ver Detalles</span>
+                </div>
+            </div>
+
+            <!-- Back Exfoliation -->
+            <div class="card" onclick="openModal('exo1')">
+                <div class="card-image-wrapper">
+                    <img src="imagenes/exo1.jpg" alt="Back Exfoliation">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Back Exfoliation</h3>
+                    <span class="card-subtitle">Espalda</span>
+                    <span class="card-price">$40 <span>USD</span></span>
+                    <span class="btn-details">Ver Detalles</span>
+                </div>
+            </div>
+
+            <!-- Coffee Exfoliation -->
+            <div class="card" onclick="openModal('exo2')">
+                <div class="card-image-wrapper">
+                    <img src="imagenes/exo2.jpg" alt="Coffee">
+                </div>                <div class="card-content">
+                    <h3 class="card-title">Coffee Exfoliation</h3>
+                    <span class="card-subtitle">Café</span>
+                    <span class="card-price">$50 <span>USD</span></span>
+                    <span class="btn-details">Ver Detalles</span>
+                </div>
+            </div>
+
+            <!-- Chocolate Exfoliation -->
+            <div class="card" onclick="openModal('exo3')">
+                <div class="card-image-wrapper">
+                    <img src="imagenes/exo3.jpg" alt="Chocolate Exfoliation">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Chocolate Exfoliation</h3>
+                    <span class="card-subtitle">Cacao</span>
+                    <span class="card-price">$50 <span>USD</span></span>
+                    <span class="btn-details">Ver Detalles</span>
+                </div>
+            </div>
+
+            <!-- Tropical Exfoliation -->
+            <div class="card" onclick="openModal('exo4')">
+                <div class="card-image-wrapper">
+                    <img src="imagenes/exo4.jpg" alt="Tropical">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Tropical Exfoliation</h3>
+                    <span class="card-subtitle">Frutal</span>
+                    <span class="card-price">$50 <span>USD</span></span>
+                    <span class="btn-details">Ver Detalles</span>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -390,7 +675,8 @@
     <div id="detailModal" class="modal" onclick="closeModal(event)">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModalBtn()">&times;</span>
-                        <div class="modal-image-container">
+            
+            <div class="modal-image-container">
                 <img id="modal-img" src="" alt="">
             </div>
             
@@ -398,13 +684,23 @@
                 <h2 id="modal-title"></h2>
                 <p id="modal-desc"></p>
                 
+                <!-- Sección de Precios -->                <div class="modal-prices">
+                    <h4>Inversión USD</h4>
+                    <div id="modal-prices-list"></div>
+                </div>
+                
+                <div id="modal-includes-container" style="display:none;">
+                    <strong style="color:var(--primary-dark); display:block; margin-bottom:10px;">Este paquete incluye:</strong>
+                    <ul id="modal-includes" class="includes-list"></ul>
+                </div>
+
                 <div class="modal-meta">
                     <div class="meta-item">
                         <strong>Duración</strong>
                         <span id="modal-duracion"></span>
                     </div>
                     <div class="meta-item">
-                        <strong>Enfoque</strong>
+                        <strong>Categoría</strong>
                         <span id="modal-focus"></span>
                     </div>
                 </div>
@@ -413,55 +709,228 @@
     </div>
 
     <footer>
-        <p>SPA ESSENCE &copy; 2023. Todos los derechos reservados.</p>
+        <p>Adan & Eva Spa &copy; 2026. Todos los derechos reservados.</p>
         <p style="opacity: 0.5; font-size: 0.7rem; margin-top: 10px;">Diseño para fines académicos</p>
     </footer>
 
     <script>
-        const tratamientos = {
-            'm1': {
-                titulo: "Relajación Profunda",
-                subtitulo: "Terapia Sueca",
-                imagen: "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80",
-                descripcion: "Un masaje clásico diseñado para aliviar la tensión muscular y calmar el sistema nervioso. Utilizamos movimientos largos y fluidos (effleurage) combinados con amasamiento suave para mejorar la circulación y promover un estado de bienestar general.",
-                duracion: "60 Minutos",
-                focus: "Estrés y Tensión"
+        // BASE DE DATOS COMPLETA CON RUTAS DE IMÁGENES LOCALES
+        const servicios = {
+            // --- PAQUETES ---
+            'pkg1': {
+                titulo: "Goodbyes Stress",
+                imagen: "imagenes/pkg1.jpg",
+                descripcion: "El paquete ideal para desconectar completamente del ruido diario. Una combinación perfecta de terapias manuales y calor húmedo para eliminar la tensión acumulada.",
+                duracion: "~90 Minutos",
+                focus: "Anti-Estrés",
+                precios: [{ duracion: "Paquete Completo", precio: 60 }],
+                incluye: ["Relaxing Massage (30 min)", "Foot Reflexology", "Body Wrap", "Sauna", "Steam Bath"]
             },
-            'm2': {
-                titulo: "Litoterapia",
-                subtitulo: "Piedras Volcánicas",
-                imagen: "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80",
-                descripcion: "Una terapia ancestral que utiliza el calor retenido en piedras de basalto pulidas. Las piedras se colocan en puntos clave del cuerpo para transferir energía térmica, permitiendo que el terapeuta trabaje capas musculares profundas sin aplicar presión excesiva.",
-                duracion: "75 Minutos",
-                focus: "Calor y Drenaje"
+            'pkg2': {
+                titulo: "Serenity",
+                imagen: "imagenes/pkg2.jpg",
+                descripcion: "Busca la armonía entre cuerpo y mente. Este tratamiento combina hidratación profunda con masajes faciales y corporales para un brillo natural.",
+                duracion: "~120 Minutos",
+                focus: "Hidratación",
+                precios: [{ duracion: "Paquete Completo", precio: 60 }],
+                incluye: ["Relaxing Massage (30 min)", "Foot Reflexology", "Facial Massage", "Body Hidration", "Sauna", "Steam Bath"]            },
+            'pkg3': {
+                titulo: "Purifying Sensation",
+                imagen: "imagenes/pkg3.jpg",
+                descripcion: "Una experiencia detoxificante. Elimina impurezas de la piel mediante exfoliación y máscaras corporales, terminando con un baño en piscina.",
+                duracion: "~100 Minutos",
+                focus: "Desintoxicación",
+                precios: [{ duracion: "Paquete Completo", precio: 80 }],
+                incluye: ["Relaxing Massage (45 min)", "Body Exfoliation", "Body Mask", "Sauna", "Steam Bath", "Pool Access"]
             },
-            'm3': {
-                titulo: "Aromaterapia",
-                subtitulo: "Esencias Botánicas",
-                imagen: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80",
-                descripcion: "Una experiencia sensorial completa donde el tacto se une al olfato. Seleccionamos aceites esenciales puros (lavanda, eucalipto, cítricos) según las necesidades emocionales del cliente para equilibrar el cuerpo y la mente.",                duracion: "50 Minutos",
-                focus: "Equilibrio Emocional"
+            'pkg4': {
+                titulo: "Honeymoon",
+                imagen: "imagenes/pkg4.jpg",
+                descripcion: "Diseñado para compartir momentos inolvidables en pareja. Masajes simultáneos seguidos de rituales de hidratación y relajación compartida.",
+                duracion: "~90 Minutos",
+                focus: "Parejas",
+                precios: [{ duracion: "Paquete Completo", precio: 130 }],
+                incluye: ["Couples Massage (30 min)", "Facial Massage", "Foot Reflexology", "Body Hidration", "Sauna", "Steam Bath"]
             },
-            'm4': {
-                titulo: "Recuperación Muscular",
-                subtitulo: "Técnica Deportiva",
-                imagen: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80",
-                descripcion: "Enfoque terapéutico dirigido a atletas o personas con alta actividad física. Trabaja sobre fascias y tejidos profundos para eliminar toxinas acumuladas por el esfuerzo, prevenir lesiones y acelerar la recuperación post-entrenamiento.",
-                duracion: "60 Minutos",
-                focus: "Rendimiento Físico"
+            'pkg5': {
+                titulo: "Relax Day",
+                imagen: "imagenes/pkg5.jpg",
+                descripcion: "La experiencia suprema de bienestar. Dedica tu día entero a ti mismo con tratamientos faciales, corporales y gastronómicos.",
+                duracion: "Día Completo",
+                focus: "Lujo Total",
+                precios: [{ duracion: "Paquete Completo", precio: 170 }],
+                incluye: ["Morning: Facial & Massage", "Lunch Included (Lobster, Chicken, or Pork)", "Afternoon: Exfoliation & Hidration", "Sauna & Steam Bath"]
+            },
+
+            // --- MASAJES ---
+            'mas1': {
+                titulo: "Relaxing Massage",
+                imagen: "imagenes/mas1.jpg",
+                descripcion: "Movimientos suaves y rítmicos diseñados para calmar el sistema nervioso y mejorar la circulación sanguínea. Ideal para reducir el estrés.",
+                duracion: "25 - 50 min",
+                focus: "Relajación",
+                precios: [
+                    { duracion: "25 minutos", precio: 35 },
+                    { duracion: "50 minutos", precio: 55 }
+                ],
+                incluye: null
+            },
+            'mas2': {
+                titulo: "Therapeutic Massage",
+                imagen: "imagenes/mas2.jpg",
+                descripcion: "Técnica de presión más profunda enfocada en liberar nudos musculares y aliviar dolores crónicos. Recomendado para tensiones específicas.",
+                duracion: "25 - 50 min",
+                focus: "Salud Muscular",
+                precios: [
+                    { duracion: "25 minutos", precio: 40 },                    { duracion: "35 minutos", precio: 50 },
+                    { duracion: "50 minutos", precio: 77 }
+                ],
+                incluye: null
+            },
+            'mas3': {
+                titulo: "Cuban Rum Massage",
+                imagen: "imagenes/mas3.jpg",
+                descripcion: "Un tratamiento exótico que utiliza ron cubano caliente y especias para estimular la circulación y brindar una sensación de calor profundo.",
+                duracion: "50 min",
+                focus: "Exótico",
+                precios: [{ duracion: "50 minutos", precio: 80 }],
+                incluye: null
+            },
+            'mas4': {
+                titulo: "Four Hands Massage",
+                imagen: "imagenes/mas4.jpg",
+                descripcion: "Dos terapeutas trabajando en sincronía perfecta sobre tu cuerpo, duplicando la sensación de relajación y cobertura.",
+                duracion: "45 min",
+                focus: "Sincronización",
+                precios: [{ duracion: "45 minutos", precio: 100 }],
+                incluye: null
+            },
+            'mas5': {
+                titulo: "Couple Massage",
+                imagen: "imagenes/mas5.jpg",
+                descripcion: "Disfruta de un masaje relajante junto a tu pareja en la misma habitación. Una experiencia romántica y relajante.",
+                duracion: "25 - 50 min",
+                focus: "Parejas",
+                precios: [
+                    { duracion: "25 minutos", precio: 75 },
+                    { duracion: "50 minutos", precio: 120 }
+                ],
+                incluye: null
+            },
+            'mas6': {
+                titulo: "Foot Reflexology",
+                imagen: "imagenes/mas6.jpg",
+                descripcion: "Técnica de presión en puntos específicos de los pies que corresponde a diferentes órganos del cuerpo. Promueve la salud general.",
+                duracion: "25 min",
+                focus: "Reflexología",
+                precios: [{ duracion: "25 minutos", precio: 33 }],
+                incluye: null
+            },
+
+            // --- WRAPS ---
+            'wrap1': {
+                titulo: "Seamud Wraps",
+                imagen: "imagenes/wrap1.jpg",
+                descripcion: "Aplicación de lodo marino rico en minerales para desintoxicar la piel y mejorar su elasticidad.",                duracion: "45 min",
+                focus: "Mineral",
+                precios: [{ duracion: "Tratamiento Completo", precio: 35 }],
+                incluye: null
+            },
+            'wrap2': {
+                titulo: "Chocolate Wrap",
+                imagen: "imagenes/wrap2.jpg",
+                descripcion: "Envoltura corporal con cacao puro, conocido por sus propiedades antioxidantes y aroma reconfortante.",
+                duracion: "45 min",
+                focus: "Antioxidante",
+                precios: [{ duracion: "Tratamiento Completo", precio: 35 }],
+                incluye: null
+            },
+            'wrap3': {
+                titulo: "Marine Seaweed Wrap",
+                imagen: "imagenes/wrap3.jpg",
+                descripcion: "Tratamiento con algas marinas que ayuda a eliminar toxinas y mejorar la circulación.",
+                duracion: "45 min",
+                focus: "Detox",
+                precios: [{ duracion: "Tratamiento Completo", precio: 35 }],
+                incluye: null
+            },
+
+            // --- EXFOLIACIONES ---
+            'exo1': {
+                titulo: "Back Exfoliation",
+                imagen: "imagenes/exo1.jpg",
+                descripcion: "Exfoliación específica para la espalda, eliminando células muertas y dejando la piel suave.",
+                duracion: "30 min",
+                focus: "Renovación",
+                precios: [{ duracion: "Espalda", precio: 40 }],
+                incluye: null
+            },
+            'exo2': {
+                titulo: "Coffee Exfoliation",
+                imagen: "imagenes/exo2.jpg",
+                descripcion: "Exfoliación con granos de café que estimula la circulación y deja la piel renovada.",
+                duracion: "45 min",
+                focus: "Estimulante",
+                precios: [{ duracion: "Cuerpo Completo", precio: 50 }],
+                incluye: null
+            },
+            'exo3': {
+                titulo: "Chocolate Exfoliation",
+                imagen: "imagenes/exo3.jpg",
+                descripcion: "Exfoliación dulce con cacao que nutre y suaviza la piel mientras libera endorfinas.",
+                duracion: "45 min",
+                focus: "Nutritivo",
+                precios: [{ duracion: "Cuerpo Completo", precio: 50 }],                incluye: null
+            },
+            'exo4': {
+                titulo: "Tropical Exfoliation",
+                imagen: "imagenes/exo4.jpg",
+                descripcion: "Mezcla de frutas tropicales que exfolia y aromaterapia refrescante para la piel.",
+                duracion: "45 min",
+                focus: "Refrescante",
+                precios: [{ duracion: "Cuerpo Completo", precio: 50 }],
+                incluye: null
             }
         };
 
         const modal = document.getElementById('detailModal');
         
         function openModal(id) {
-            const data = tratamientos[id];
+            const data = servicios[id];
             if(data) {
                 document.getElementById('modal-title').innerText = data.titulo;
                 document.getElementById('modal-desc').innerText = data.descripcion;
                 document.getElementById('modal-img').src = data.imagen;
                 document.getElementById('modal-duracion').innerText = data.duracion;
                 document.getElementById('modal-focus').innerText = data.focus;
+                
+                // Generar lista de precios
+                const pricesList = document.getElementById('modal-prices-list');
+                pricesList.innerHTML = '';
+                data.precios.forEach(opcion => {
+                    let div = document.createElement('div');
+                    div.className = 'price-option';
+                    div.innerHTML = `
+                        <span class="duration">${opcion.duracion}</span>
+                        <span class="amount">$${opcion.precio} USD</span>
+                    `;
+                    pricesList.appendChild(div);
+                });
+                
+                // Manejo de lista de incluidos (solo para paquetes)
+                const includesContainer = document.getElementById('modal-includes-container');
+                const includesList = document.getElementById('modal-includes');
+                
+                if(data.incluye) {
+                    includesContainer.style.display = 'block';
+                    includesList.innerHTML = '';
+                    data.incluye.forEach(item => {
+                        let li = document.createElement('li');
+                        li.innerText = item;
+                        includesList.appendChild(li);
+                    });
+                } else {                    includesContainer.style.display = 'none';
+                }
                 
                 modal.classList.add('show');
                 document.body.style.overflow = 'hidden';
