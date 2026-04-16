@@ -47,8 +47,7 @@
             z-index: 100;
             box-shadow: 0 2px 10px rgba(0,0,0,0.03);
         }
-        .logo {
-            font-size: 1.6rem;
+        .logo {            font-size: 1.6rem;
             color: var(--primary-dark);
             letter-spacing: 2px;
             font-weight: 600;
@@ -97,13 +96,12 @@
             text-transform: uppercase;
             opacity: 0.9;
         }
-        /* --- SECCIONES GENERALES --- */
-        .container {
-            max-width: 1100px;
-            margin: 60px auto;
+                /* --- GALLERY CAROUSEL --- */
+        .gallery-section {
+            margin: 80px 0;
             padding: 0 20px;
         }
-
+        
         .section-header {
             text-align: center;
             margin-bottom: 50px;
@@ -122,11 +120,87 @@
             background-color: var(--primary-gold);
             margin: 0 auto;
         }
+        
+        .carousel-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(93, 64, 55, 0.2);
+        }
+        
+        .carousel {
+            display: flex;
+            transition: transform 0.8s ease-in-out;
+        }
+        
+        .carousel-item {
+            min-width: 100%;
+            position: relative;
+        }
+        
+        .carousel-item img {
+            width: 100%;
+            display: block;
+            height: 500px;
+            object-fit: cover;
+        }        
+        .carousel-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .carousel-dot.active {
+            background-color: var(--primary-gold);
+        }
+        
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        
+        .carousel-btn {
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+        
+        .carousel-btn:hover {
+            background: rgba(0, 0, 0, 0.6);        }
 
-        .catalog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 40px;
+        /* --- SECCIONES GENERALES --- */
+        .container {
+            max-width: 1100px;
+            margin: 60px auto;
+            padding: 0 20px;
         }
 
         /* --- TARJETA (CARD) --- */
@@ -169,8 +243,7 @@
         .card-title {
             font-size: 1.4rem;
             color: var(--primary-dark);
-            margin: 0 0 10px 0;
-        }
+            margin: 0 0 10px 0;        }
 
         .card-subtitle {
             font-size: 0.85rem;
@@ -219,8 +292,7 @@
             display: none;
             position: fixed;
             z-index: 1000;
-            left: 0;
-            top: 0;
+            left: 0;            top: 0;
             width: 100%;
             height: 100%;
             background-color: rgba(93, 64, 55, 0.9);
@@ -269,8 +341,7 @@
             justify-content: center;
         }
 
-        .close-btn {
-            position: absolute;
+        .close-btn {            position: absolute;
             top: 20px;
             right: 25px;
             font-size: 35px;
@@ -292,7 +363,8 @@
             padding-bottom: 15px;
         }
 
-        #modal-desc {            font-size: 1rem;
+        #modal-desc {
+            font-size: 1rem;
             line-height: 1.8;
             color: #555;
             margin-bottom: 30px;
@@ -318,8 +390,7 @@
             justify-content: space-between;
             padding: 8px 0;
             border-bottom: 1px solid rgba(255,255,255,0.3);
-            font-size: 0.95rem;
-        }
+            font-size: 0.95rem;        }
 
         .price-option:last-child {
             border-bottom: none;
@@ -368,6 +439,130 @@
             margin-bottom: 5px;
         }
 
+        /* --- DELAVIDA SECTION --- */        .delavida-section {
+            margin: 80px 0;
+            padding: 0 20px;
+        }
+        
+        .delavida-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .delavida-carousel-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(93, 64, 55, 0.2);
+        }
+        
+        .delavida-carousel {
+            display: flex;
+            transition: transform 0.8s ease-in-out;
+        }
+        
+        .delavida-item {
+            min-width: 100%;
+            position: relative;
+        }
+        
+        .delavida-item img {
+            width: 100%;
+            display: block;
+            height: 500px;
+            object-fit: cover;
+        }
+        
+        .delavida-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .delavida-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;            transition: background-color 0.3s;
+        }
+        
+        .delavida-dot.active {
+            background-color: var(--primary-gold);
+        }
+        
+        .delavida-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        
+        .delavida-btn {
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+        
+        .delavida-btn:hover {
+            background: rgba(0, 0, 0, 0.6);
+        }
+        
+        .delavida-description {
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 30px;
+            box-shadow: var(--shadow-soft);
+        }
+        
+        .delavida-description h4 {
+            color: var(--primary-dark);
+            font-size: 1.8rem;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+                .delavida-description p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+        
+        .product-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .highlight-item {
+            background: var(--bg-body);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 3px solid var(--primary-gold);
+        }
+        
+        .highlight-item h5 {
+            color: var(--primary-dark);
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
         /* --- FOOTER --- */
         footer {
             background-color: var(--primary-dark);
@@ -390,8 +585,16 @@
             
             .modal-image-container { height: 250px; flex: none; }
             .modal-info { padding: 30px; }
-                        .modal-prices {
-                padding: 15px;
+            .modal-prices {
+                padding: 15px;            }
+            
+            .carousel-item img,
+            .delavida-item img {
+                height: 300px;
+            }
+            
+            .delavida-description {
+                padding: 25px 20px;
             }
         }
     </style>
@@ -411,6 +614,54 @@
             <p>Descubre nuestros paquetes y tratamientos exclusivos</p>
         </div>
     </div>
+
+    <!-- GALLERY CAROUSEL SECTION -->
+    <section class="gallery-section">
+        <div class="section-header">
+            <h3>Galería</h3>
+            <div class="divider"></div>
+        </div>
+        
+        <div class="carousel-container">
+            <div class="carousel">
+                <div class="carousel-item">
+                    <img src="imagenes/gallery1.jpg" alt="Galería Spa 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="imagenes/gallery2.jpg" alt="Galería Spa 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="imagenes/gallery3.jpg" alt="Galería Spa 3">
+                </div>
+                <div class="carousel-item">
+                    <img src="imagenes/gallery4.jpg" alt="Galería Spa 4">
+                </div>                <div class="carousel-item">
+                    <img src="imagenes/gallery5.jpg" alt="Galería Spa 5">
+                </div>
+                <div class="carousel-item">
+                    <img src="imagenes/gallery6.jpg" alt="Galería Spa 6">
+                </div>
+                <div class="carousel-item">
+                    <img src="imagenes/gallery7.jpg" alt="Galería Spa 7">
+                </div>
+            </div>
+            
+            <div class="carousel-nav">
+                <button class="carousel-btn prev-btn" id="prev-btn-gallery">&#8249;</button>
+                <button class="carousel-btn next-btn" id="next-btn-gallery">&#8250;</button>
+            </div>
+            
+            <div class="carousel-controls">
+                <div class="carousel-dot active" data-index="0"></div>
+                <div class="carousel-dot" data-index="1"></div>
+                <div class="carousel-dot" data-index="2"></div>
+                <div class="carousel-dot" data-index="3"></div>
+                <div class="carousel-dot" data-index="4"></div>
+                <div class="carousel-dot" data-index="5"></div>
+                <div class="carousel-dot" data-index="6"></div>
+            </div>
+        </div>
+    </section>
 
     <!-- SECCIÓN 1: PAQUETES ESPECIALES -->
     <div class="container">
@@ -433,8 +684,7 @@
                 </div>
             </div>
 
-            <!-- Serenity -->
-            <div class="card" onclick="openModal('pkg2')">
+            <!-- Serenity -->            <div class="card" onclick="openModal('pkg2')">
                 <div class="card-image-wrapper">
                     <img src="imagenes/pkg2.jpg" alt="Serenity">
                 </div>
@@ -483,8 +733,7 @@
                     <span class="btn-details">Ver Detalles</span>
                 </div>
             </div>
-        </div>
-    </div>
+        </div>    </div>
 
     <!-- SECCIÓN 2: MASAJES INDIVIDUALES -->
     <div class="container">
@@ -533,8 +782,7 @@
             </div>
 
             <!-- Four Hands -->
-            <div class="card" onclick="openModal('mas4')">
-                <div class="card-image-wrapper">
+            <div class="card" onclick="openModal('mas4')">                <div class="card-image-wrapper">
                     <img src="imagenes/mas4.jpg" alt="Four Hands">
                 </div>
                 <div class="card-content">                    <h3 class="card-title">Four Hands Massage</h3>
@@ -583,8 +831,7 @@
             <!-- Seamud Wrap -->
             <div class="card" onclick="openModal('wrap1')">
                 <div class="card-image-wrapper">
-                    <img src="imagenes/wrap1.jpg" alt="Seamud">
-                </div>
+                    <img src="imagenes/wrap1.jpg" alt="Seamud">                </div>
                 <div class="card-content">
                     <h3 class="card-title">Seamud Wraps</h3>                    <span class="card-subtitle">Lodo Marino</span>
                     <span class="card-price">$35 <span>USD</span></span>
@@ -633,8 +880,7 @@
 
             <!-- Coffee Exfoliation -->
             <div class="card" onclick="openModal('exo2')">
-                <div class="card-image-wrapper">
-                    <img src="imagenes/exo2.jpg" alt="Coffee">
+                <div class="card-image-wrapper">                    <img src="imagenes/exo2.jpg" alt="Coffee">
                 </div>                <div class="card-content">
                     <h3 class="card-title">Coffee Exfoliation</h3>
                     <span class="card-subtitle">Café</span>
@@ -671,12 +917,68 @@
         </div>
     </div>
 
+    <!-- DELAVIDA SECTION -->
+    <section class="delavida-section">
+        <div class="delavida-container">
+            <div class="section-header">
+                <h3>Delavida</h3>
+                <div class="divider"></div>
+                <p>Productos premium para el cuidado de la piel y masajes relajantes</p>
+            </div>
+            
+            <div class="delavida-carousel-container">
+                <div class="delavida-carousel">
+                    <div class="delavida-item">
+                        <img src="imagenes/delavida-logo.jpg" alt="Logo Delavida">                    </div>
+                    <div class="delavida-item">
+                        <img src="imagenes/delavida-product1.jpg" alt="Aceite de Masaje Delavida">
+                    </div>
+                    <div class="delavida-item">
+                        <img src="imagenes/delavida-product2.jpg" alt="Crema Corporal Delavida">
+                    </div>
+                </div>
+                
+                <div class="delavida-nav">
+                    <button class="delavida-btn" id="prev-btn-delavida">&#8249;</button>
+                    <button class="delavida-btn" id="next-btn-delavida">&#8250;</button>
+                </div>
+                
+                <div class="delavida-controls">
+                    <div class="delavida-dot active" data-index="0"></div>
+                    <div class="delavida-dot" data-index="1"></div>
+                    <div class="delavida-dot" data-index="2"></div>
+                </div>
+            </div>
+            
+            <div class="delavida-description">
+                <h4>Productos Delavida</h4>
+                <p>Descubre nuestra línea exclusiva de productos para el cuidado de la piel y masajes relajantes. Cada producto está formulado con ingredientes naturales de alta calidad para ofrecerte la mejor experiencia de bienestar en casa o en nuestro spa.</p>
+                
+                <div class="product-highlights">
+                    <div class="highlight-item">
+                        <h5>Aceite de Masaje Premium</h5>
+                        <p>Formulado con ingredientes naturales y aceites esenciales, este aceite proporciona una experiencia de masaje sensorial que hidrata profundamente la piel mientras alivia la tensión muscular.</p>
+                    </div>
+                    
+                    <div class="highlight-item">
+                        <h5>Crema Hidratante Corporal</h5>
+                        <p>Una fórmula rica y nutritiva que restaura la elasticidad de la piel. Enriquecida con manteca de karité y vitamina E, deja la piel suave y revitalizada durante todo el día.</p>
+                    </div>
+                    
+                    <div class="highlight-item">
+                        <h5>Exfoliante Facial Natural</h5>
+                        <p>Elimina suavemente las células muertas con partículas de jojoba y extractos botánicos. Deja la piel limpia, suave y preparada para recibir tratamientos posteriores.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Modal Detalle -->
     <div id="detailModal" class="modal" onclick="closeModal(event)">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModalBtn()">&times;</span>
-            
-            <div class="modal-image-container">
+                        <div class="modal-image-container">
                 <img id="modal-img" src="" alt="">
             </div>
             
@@ -725,8 +1027,7 @@
                 focus: "Anti-Estrés",
                 precios: [{ duracion: "Paquete Completo", precio: 60 }],
                 incluye: ["Relaxing Massage (30 min)", "Foot Reflexology", "Body Wrap", "Sauna", "Steam Bath"]
-            },
-            'pkg2': {
+            },            'pkg2': {
                 titulo: "Serenity",
                 imagen: "imagenes/pkg2.jpg",
                 descripcion: "Busca la armonía entre cuerpo y mente. Este tratamiento combina hidratación profunda con masajes faciales y corporales para un brillo natural.",
@@ -775,8 +1076,7 @@
                 ],
                 incluye: null
             },
-            'mas2': {
-                titulo: "Therapeutic Massage",
+            'mas2': {                titulo: "Therapeutic Massage",
                 imagen: "imagenes/mas2.jpg",
                 descripcion: "Técnica de presión más profunda enfocada en liberar nudos musculares y aliviar dolores crónicos. Recomendado para tensiones específicas.",
                 duracion: "25 - 50 min",
@@ -826,7 +1126,6 @@
                 precios: [{ duracion: "25 minutos", precio: 33 }],
                 incluye: null
             },
-
             // --- WRAPS ---
             'wrap1': {
                 titulo: "Seamud Wraps",
@@ -875,8 +1174,7 @@
                 incluye: null
             },
             'exo3': {
-                titulo: "Chocolate Exfoliation",
-                imagen: "imagenes/exo3.jpg",
+                titulo: "Chocolate Exfoliation",                imagen: "imagenes/exo3.jpg",
                 descripcion: "Exfoliación dulce con cacao que nutre y suaviza la piel mientras libera endorfinas.",
                 duracion: "45 min",
                 focus: "Nutritivo",
@@ -925,8 +1223,7 @@
                     includesContainer.style.display = 'block';
                     includesList.innerHTML = '';
                     data.incluye.forEach(item => {
-                        let li = document.createElement('li');
-                        li.innerText = item;
+                        let li = document.createElement('li');                        li.innerText = item;
                         includesList.appendChild(li);
                     });
                 } else {                    includesContainer.style.display = 'none';
@@ -947,6 +1244,91 @@
                 closeModalBtn();
             }
         }
+        
+        // Carousel functionality for main gallery
+        document.addEventListener('DOMContentLoaded', function() {
+            // Gallery carousel
+            const carousel = document.querySelector('.carousel');
+            const galleryItems = document.querySelectorAll('.carousel-item');
+            const galleryDots = document.querySelectorAll('.carousel-dot');
+            const prevBtnGallery = document.getElementById('prev-btn-gallery');
+            const nextBtnGallery = document.getElementById('next-btn-gallery');
+            
+            let galleryCurrentIndex = 0;
+            const galleryTotalItems = galleryItems.length;
+            
+            function updateGalleryCarousel() {
+                carousel.style.transform = `translateX(-${galleryCurrentIndex * 100}%)`;
+                galleryDots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === galleryCurrentIndex);
+                });
+            }
+            
+            // Gallery buttons
+            prevBtnGallery.addEventListener('click', () => {
+                galleryCurrentIndex = (galleryCurrentIndex - 1 + galleryTotalItems) % galleryTotalItems;
+                updateGalleryCarousel();
+            });
+            
+            nextBtnGallery.addEventListener('click', () => {
+                galleryCurrentIndex = (galleryCurrentIndex + 1) % galleryTotalItems;
+                updateGalleryCarousel();            });
+            
+            // Gallery dots
+            galleryDots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    galleryCurrentIndex = parseInt(dot.getAttribute('data-index'));
+                    updateGalleryCarousel();
+                });
+            });
+            
+            // Gallery auto-rotate
+            setInterval(() => {
+                galleryCurrentIndex = (galleryCurrentIndex + 1) % galleryTotalItems;
+                updateGalleryCarousel();
+            }, 2000);
+            
+            // Delavida carousel
+            const delavidaCarousel = document.querySelector('.delavida-carousel');
+            const delavidaItems = document.querySelectorAll('.delavida-item');
+            const delavidaDots = document.querySelectorAll('.delavida-dot');
+            const prevBtnDelavida = document.getElementById('prev-btn-delavida');
+            const nextBtnDelavida = document.getElementById('next-btn-delavida');
+            
+            let delavidaCurrentIndex = 0;
+            const delavidaTotalItems = delavidaItems.length;
+            
+            function updateDelavidaCarousel() {
+                delavidaCarousel.style.transform = `translateX(-${delavidaCurrentIndex * 100}%)`;
+                delavidaDots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === delavidaCurrentIndex);
+                });
+            }
+            
+            // Delavida buttons
+            prevBtnDelavida.addEventListener('click', () => {
+                delavidaCurrentIndex = (delavidaCurrentIndex - 1 + delavidaTotalItems) % delavidaTotalItems;
+                updateDelavidaCarousel();
+            });
+            
+            nextBtnDelavida.addEventListener('click', () => {
+                delavidaCurrentIndex = (delavidaCurrentIndex + 1) % delavidaTotalItems;
+                updateDelavidaCarousel();
+            });
+            
+            // Delavida dots
+            delavidaDots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    delavidaCurrentIndex = parseInt(dot.getAttribute('data-index'));
+                    updateDelavidaCarousel();
+                });            });
+            
+            // Delavida auto-rotate
+            setInterval(() => {
+                delavidaCurrentIndex = (delavidaCurrentIndex + 1) % delavidaTotalItems;
+                updateDelavidaCarousel();
+            }, 3000);
+        });
     </script>
 </body>
 </html>
